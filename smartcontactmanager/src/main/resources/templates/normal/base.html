@@ -13,7 +13,7 @@
   </head>
   <body>
 	<!--navbar code-->
-		    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
 		  <div class="container-fluid">
 		    <a class="navbar-brand" href="#">Smart Contact Manager</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +43,16 @@
     
      <!--sidebar start-->
     
-   <div class="sidebar">
+   <div class="sidebar mt-2">
    
    		<span th:onclick="toggleSidebar()" class="crossBtn">&times;</span>
    
-   		<a href="#" class= "item"><i class="fa-solid fa-house" style="margin-right:10px"></i> Home</a>
+   		<a href="#" th:href="@{/user/index}"  class= "item"><i class="fa-solid fa-house" style="margin-right:10px"></i> Home</a>
    		<a href="#" class= "item"><i class="fa-solid fa-address-book"  style="margin-right:10px"></i> View Contacts</a>
-   		<a href="#" class= "item"><i class="fa-solid fa-pencil"  style="margin-right:10px"></i> Add Contacts</a>
+   		<a href="#" th:href="@{/user/add-contact}" class= "item"><i class="fa-solid fa-pencil"  style="margin-right:10px"></i> Add Contacts</a>
    		<a href="#" class= "item"><i class="fa-solid fa-user"  style="margin-right:10px"></i> Your Profile</a>
    		<a href="#" class= "item"><i class="fa-solid fa-gear"  style="margin-right:10px"></i> Settings</a>
-   		<a href="#" class= "item"><i class="fa-solid fa-right-from-bracket"  style="margin-right:10px"></i> Logout</a>
+   		<a href="#" th:href="@{/logout}" class= "item"><i class="fa-solid fa-right-from-bracket"  style="margin-right:10px"></i> Logout</a>
    		
    		<div class="divider"></div>
    
@@ -62,7 +62,7 @@
    
    <!--content start-->
    
-   <div class="content">
+   <div class="content mt-5">
    
    	<i th:onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
    
