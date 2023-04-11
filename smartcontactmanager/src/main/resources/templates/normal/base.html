@@ -48,7 +48,7 @@
    		<span th:onclick="toggleSidebar()" class="crossBtn">&times;</span>
    
    		<a href="#" th:href="@{/user/index}"  class= "item"><i class="fa-solid fa-house" style="margin-right:10px"></i> Home</a>
-   		<a href="#" class= "item"><i class="fa-solid fa-address-book"  style="margin-right:10px"></i> View Contacts</a>
+   		<a href="#" th:href="@{/user/show-contacts}" class= "item"><i class="fa-solid fa-address-book"  style="margin-right:10px"></i> View Contacts</a>
    		<a href="#" th:href="@{/user/add-contact}" class= "item"><i class="fa-solid fa-pencil"  style="margin-right:10px"></i> Add Contacts</a>
    		<a href="#" class= "item"><i class="fa-solid fa-user"  style="margin-right:10px"></i> Your Profile</a>
    		<a href="#" class= "item"><i class="fa-solid fa-gear"  style="margin-right:10px"></i> Settings</a>
