@@ -8,8 +8,8 @@
   </head>
   <body>
   	<section>
-			<div class="card" style="margin-right:20px;margin-left:20px">
-				<div class="card-body">
+			<div class="card" th:if="${contact}" style="margin-right:20px;margin-left:20px" >
+				<div class="card-body"  >
 					<div class="container text-center">
 						<img src="" style="height:200px; width:200px" class="my_profile_picture" th:src="@{'/img/'+${contact.image}}" alt="profile image"  />
 						
@@ -62,7 +62,7 @@
 						  </div>
 						
 						<div class="container">
-							<button style = "margin-top:15px"class="btn btn-danger btn-small">Delete</button>
+							<button th:onclick="|deleteContact(${contact.cId})|" style = "margin-top:15px"class="btn btn-danger btn-small">Delete</button>
 				      		<button style = "margin-top:15px"class="btn btn-success btn-small">Update</button>
 						</div>
 						
@@ -70,7 +70,11 @@
 					</div>
 				
 				</div>
+				
+				
+				
 			</div>
+			<h1 class="text-center p-3 bg-danger text-white" style="margin-right:10px" th:unless="${contact}">You don't have permission to access this contact!</h1>
   	</section>
 	
   </body>

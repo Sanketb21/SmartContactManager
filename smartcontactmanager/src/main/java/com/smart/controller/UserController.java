@@ -155,16 +155,40 @@ public class UserController {
 	
 	//showing particular contact details
 	@RequestMapping("/{cId}/contact")
-	public String showContactDetails(@PathVariable("cId") Integer cId, Model model) {
+	public String showContactDetails(@PathVariable("cId") Integer cId, Model model, Principal principal) {
 		System.out.println("CID "+cId);
 		
 		Optional<Contact> contactOptional =  this.contactRepository.findById(cId);
 		Contact contact = contactOptional.get();
 		
-		model.addAttribute("contact", contact);
+		String userName = principal.getName();
+		User user = this.userRepository.getUserByUsername(userName);
 		
-		
+		if(user.getId() == contact.getUser().getId()) {
+			model.addAttribute("contact", contact);
+			model.addAttribute("title", contact.getName());
+		}
+	
 		return "normal/contact_detail";
+	}
+	
+	//delete contact handler
+	@GetMapping("/delete/{cid}")
+	public String deleteContact(@PathVariable("cid") Integer cId, Model model, HttpSession session) {
+		  
+		Contact contact =  this.contactRepository.findById(cId).get();
+				
+		//contact.setUser(null); commented by me
+		
+		//deleting image as well
+		
+		
+		
+		this.contactRepository.deleteByIdCustom(cId);
+		
+		//this.contactRepository.delete(contact); commented by me
+		session.setAttribute("message", new Message("Contact Deleted Successfully", "success"));
+		return "redirect:/user/show-contacts/0";
 	}
 	
 	
