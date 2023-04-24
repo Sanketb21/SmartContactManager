@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th = "http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
   <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <title>This is home page</title>
     
@@ -11,6 +12,22 @@
 		<div class="card" style="margin-right:20px;margin-left:20px">
 			<div class="card-body">
 				<h1 class="text-center">Your contacts</h1>
+				
+				<!--search-->
+				<div class="search-container my-4">
+					<input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search your contacts"/>
+					
+					<div class="search-result">
+					
+					<!--result goes here-->
+					
+					
+					
+					</div>
+				
+				</div>
+				
+				
 				<table class="table">
 				  <thead>
 				    <tr>

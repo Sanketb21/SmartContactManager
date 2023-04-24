@@ -1,18 +1,5 @@
 console.log("This is my script file");
 
-// function toggleSidebar(){
-//     if($('.sidebar').is(":visible")){
-//         //true
-//         $(".sidebar").css("display","none");
-//         $(".content").css("margin-left","0%");
-//     }
-//     else{
-//         //false
-//         $(".sidebar").css("display","block");
-//         $(".content").css("margin-left","20%");
-//     }
-// };
-
 function toggleSidebar() {
     
     const sidebar =  document.getElementsByClassName("sidebar")[0];
@@ -26,4 +13,68 @@ function toggleSidebar() {
         sidebar.style.display = "none";
         content.style.marginLeft = "0%";
     }
+};
+
+// function search(){
+//     let query = document.getElementById("search-input").value;
+    
+//     if(query==""){
+//         document.querySelector(".search-result").style.display = "none";
+//     }
+//     else{
+//         //search
+//         console.log(query);
+
+//         //sending request to server
+//         let url = `http://localhost:8282/search/${query}`;
+
+//         fetch(url).then((response=>{
+//             return response.json();
+//         })
+//         .then((data)=>{
+//             //data
+//             console.log(data);
+//         })
+//         ) ;  
+
+//         document.querySelector(".search-result").style.display = "block";
+//     }
+// }
+
+function search(){
+    let query = document.getElementById("search-input").value;
+    
+    if(query==""){
+        document.querySelector(".search-result").style.display = "none";
+    }
+    else{
+        //search
+        console.log(query);
+
+        //sending request to server
+        let url = `http://localhost:8282/search/${query}`;
+
+        fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            //data
+            console.log(data);
+
+            let text=`<div class='list-group'>`
+
+            data.forEach((contact)=>{
+                text+=`<a href='/user/${contact.cId}/contact' class='list-group-item list-group-item-action'>${contact.name}</a>`
+            });
+
+            text+=`</div>`;
+
+            document.querySelector(".search-result").innerHTML = text;
+            document.querySelector(".search-result").style.display = "block";
+        });
+        
+       
+    }
 }
+
