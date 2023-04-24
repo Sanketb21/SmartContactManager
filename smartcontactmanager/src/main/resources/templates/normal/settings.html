@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+  <head>
+    <meta charset="UTF-8">
+    
+    <title>Settings</title>
+    
+  </head>
+  <body>
+  	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body">
+							<h3 class="mb-3">Change Password</h3>
+							<form action="">
+							<!--old password field-->
+							
+							<div class="form-group">
+							
+							<input style = "margin-bottom:10px" type="text" class="form-control" placeholder="Enter old password"  />
+							
+							</div>
+							
+							<!--new password field-->
+							
+							<div class="form-group">
+							
+							<input type="text" class="form-control" placeholder="Enter new password"  />
+							
+							</div>
+							
+							<div class="container text-center my-3">
+								<button type="submit" class="btn btn-success">Change</button>
+								<button type="reset" class="btn btn-primary">Reset</button>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+			const items = document.querySelectorAll('.item');
+			const homeLink = document.querySelector('#settings-link');
+			
+			items.forEach(item => {
+				item.classList.remove('active');
+			});
+			
+			homeLink.classList.add('active');
+			});
+		</script>
+		
+  	</section>
+	
+  </body>
+</html>

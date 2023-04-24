@@ -258,5 +258,14 @@ public class UserController {
 		return "normal/profile";
 	}
 	
+	//open settings handler
+	@GetMapping("/settings")
+	public String openSettings() {
+		return "normal/settings";
+	}
+	
+	
+	
+	
 	
 }
