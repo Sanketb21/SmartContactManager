@@ -10,6 +10,9 @@
     
     <title th:text="${title}">Base html</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha384-/+MzmxHt4EIQK2URKa4eJxkVKoRzgFpP12Bxu3yJgRV+C4zVnIM7hOwTt8fPJo+n" 
+        crossorigin="anonymous"></script>
   </head>
   <body>
 	<!--navbar code-->
@@ -47,11 +50,11 @@
    
    		<span th:onclick="toggleSidebar()" class="crossBtn">&times;</span>
    
-   		<a href="#" th:href="@{/user/index}"  class= "item"><i class="fa-solid fa-house" style="margin-right:10px"></i> Home</a>
-   		<a href="#" th:href="@{/user/show-contacts/0}" class= "item"><i class="fa-solid fa-address-book"  style="margin-right:10px"></i> View Contacts</a>
-   		<a href="#" th:href="@{/user/add-contact}" class= "item"><i class="fa-solid fa-pencil"  style="margin-right:10px"></i> Add Contacts</a>
-   		<a href="#" th:href="@{/user/profile}"  class= "item"><i class="fa-solid fa-user"  style="margin-right:10px"></i> Your Profile</a>
-   		<a href="#" class= "item"><i class="fa-solid fa-gear"  style="margin-right:10px"></i> Settings</a>
+   		<a id="home-link" href="#" th:href="@{/user/index}"  class= "item "><i class="fa-solid fa-house" style="margin-right:10px"></i> Home</a>
+   		<a id="contacts-link" href="#" th:href="@{/user/show-contacts/0}" class= "item"><i class="fa-solid fa-address-book"  style="margin-right:10px"></i> View Contacts</a>
+   		<a id="add-link" href="#" th:href="@{/user/add-contact}" class= "item"><i class="fa-solid fa-pencil"  style="margin-right:10px"></i> Add Contacts</a>
+   		<a id="profile-link" href="#" th:href="@{/user/profile}"  class= "item"><i class="fa-solid fa-user"  style="margin-right:10px"></i> Your Profile</a>
+   		<a id="settings-link" href="#" class= "item"><i class="fa-solid fa-gear"  style="margin-right:10px"></i> Settings</a>
    		<a href="#" th:href="@{/logout}" class= "item"><i class="fa-solid fa-right-from-bracket"  style="margin-right:10px"></i> Logout</a>
    		
    		<div class="divider"></div>
@@ -110,6 +113,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+	
+	
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
   </body>
 </html>

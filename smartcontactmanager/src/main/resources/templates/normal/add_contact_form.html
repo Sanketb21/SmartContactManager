@@ -103,6 +103,19 @@
 	      });
 	    </script>
 		
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+			const items = document.querySelectorAll('.item');
+			const homeLink = document.querySelector('#add-link');
+			
+			items.forEach(item => {
+				item.classList.remove('active');
+			});
+			
+			homeLink.classList.add('active');
+			});
+		</script>
+		
   	</section>
 	
   </body>
