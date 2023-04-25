@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+  <head>
+    <meta charset="UTF-8">
+    
+    <title>This is home page</title>
+    
+  </head>
+  <body>
+  	<section class="vh-190">
+		  <div class="container-fluid h-custom">
+		    <div class="row d-flex justify-content-center align-items-center h-100">
+		      <div class="col-md-9 col-lg-6 col-xl-5">
+		        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+		          class="img-fluid" style="margin-top:110px" alt="Sample image">
+		      </div>
+		      
+		      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+		      
+				
+				
+				<form class="form" action="#" th:action="@{/send-otp}" method="post" style="margin-top:150px">
+				<div class="alert alert-primary" role="alert">
+				  An OTP has been sent to your Email Address
+				</div>
+				<!-- Email input -->
+		          <div class="form-outline mb-4">
+		            <input required="required" type="text" name = "otp"   class="form-control form-control-lg"
+		              placeholder="Enter OTP here" />
+		          </div>
+				
+				
+					<div class="text-center text-lg-start mt-4 pt-2">
+		            <button type="submit" class="btn btn-success btn-lg"
+		              style="padding-left: 2.5rem; padding-right: 2.5rem; margin-left:175px">Verify</button>
+					</div>
+				
+				</form>
+				
+		      </div>
+		    </div>
+		  </div>
+</section>
+	
+  </body>
+</html>
