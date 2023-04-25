@@ -14,12 +14,12 @@
 					<div class="card">
 						<div class="card-body">
 							<h3 class="mb-3">Change Password</h3>
-							<form action="">
+							<form action="" th:action="@{/user/change-password}" method="post">
 							<!--old password field-->
 							
 							<div class="form-group">
 							
-							<input style = "margin-bottom:10px" type="text" class="form-control" placeholder="Enter old password"  />
+							<input name="oldPassword" style = "margin-bottom:10px" type="password" class="form-control" placeholder="Enter old password"  />
 							
 							</div>
 							
@@ -27,7 +27,7 @@
 							
 							<div class="form-group">
 							
-							<input type="text" class="form-control" placeholder="Enter new password"  />
+							<input name="newPassword" type="password" class="form-control" placeholder="Enter new password"  />
 							
 							</div>
 							
