@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class ForgotController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
 	
 	
 	//email id form open handler
@@ -109,6 +113,17 @@ public class ForgotController {
 		}
 	}
 	
+	
+	//change password
+	@PostMapping("/change-password")
+	public String changePassword(@RequestParam("newpassword") String newpassword, HttpSession session) {
+		String email = (String)session.getAttribute("email");
+		User user = this.userRepository.getUserByUsername(email);
+		user.setPassword(this.bcrypt.encode(newpassword));
+		this.userRepository.save(user);
+		
+		return "redirect:/signin?change=password changed sucessfully...";
+	}
 	
 	
 }
