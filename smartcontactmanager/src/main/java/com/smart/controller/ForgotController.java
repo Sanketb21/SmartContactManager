@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.smart.dao.UserRepository;
+import com.smart.entities.User;
 import com.smart.service.EmailService;
 
 @Controller
@@ -18,6 +20,10 @@ public class ForgotController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
 	
 	//email id form open handler
 	@RequestMapping("/forgot")
@@ -73,9 +79,36 @@ public class ForgotController {
 			
 			session.setAttribute("message", "Check your Email id!");
 			return "forgot_email_form";
-		}
-		
-		
+		}	
 	}
+	
+	//verify otp
+	@PostMapping("/verify-otp")
+	public String verifyOtp(@RequestParam("otp") int otp, HttpSession session) {
+		int myOtp = (int)session.getAttribute("myotp");
+		String email = (String)session.getAttribute("email");
+		if(myOtp == otp) {
+			//password change form
+			User user = this.userRepository.getUserByUsername(email);
+			
+			if(user == null){
+				//send error message
+				session.setAttribute("message", "User does not exist with this Email Address!");
+				return "forgot_email_form";
+			}else {
+				//send change password form
+			}
+			
+			
+			
+			return "password_change_form";
+		}
+		else {
+			session.setAttribute("message", "You have entered wrong OTP!");
+			return "verify_otp";
+		}
+	}
+	
+	
 	
 }
