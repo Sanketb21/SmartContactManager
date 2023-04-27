@@ -2,14 +2,22 @@ package com.smart.controller;
 
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.smart.service.EmailService;
+
 @Controller
 public class ForgotController {
 	Random random = new Random(1000);
+	
+	@Autowired
+	private EmailService emailService;
 	
 	//email id form open handler
 	@RequestMapping("/forgot")
@@ -19,7 +27,7 @@ public class ForgotController {
 	
 	
 	@PostMapping("/send-otp")
-	public String sendOTP(@RequestParam("email") String email) {
+	public String sendOTP(@RequestParam("email") String email, HttpSession session) {
 		
 		System.out.println("EMAIL:" +email);
 		
@@ -33,7 +41,41 @@ public class ForgotController {
 		
 		//write code for sending otp to email
 		
-		return "verify_otp";
+		String subject = "OTP from SCM";
+		String message = ""
+				+"<div style = 'border:1px solid #e2e2e2; padding:20px'>"
+				+"Hi!"
+				+"<br>"
+				+"We received your request for a single-use code to use with your Smart Contact Manager."
+				+"<br>"
+				+"Your One-Time-Password (OTP) is : "
+				+"<b>"
+				+ otp
+				+"</b>"
+				+"<br>"
+				+"If you didn't request this code, you can safely ignore this email. Someone else might have typed your email address by mistake."
+				+"<br>"
+				+"Thanks,"
+				+"<br>"
+				+"Smark Contact Manager Team."
+				+"</div>";
+		String to = email;
+		
+		boolean flag = this.emailService.sendEmail(subject, message, to);
+		
+		if(flag) {
+			session.setAttribute("myotp", otp);
+			session.setAttribute("email", email);
+			return "verify_otp";
+			
+		}
+		else {
+			
+			session.setAttribute("message", "Check your Email id!");
+			return "forgot_email_form";
+		}
+		
+		
 	}
 	
 }
