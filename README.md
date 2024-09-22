@@ -27,7 +27,7 @@ To run the project, you need to have the following installed:
 4. Spring Boot (included with Maven dependencies)
 
 1. Clone the repository:
-git clone [https://github.com/your-username/smart-contact-manager.git]
+git clone https://github.com/Sanketb21/SmartContactManager.git
 2. Navigate to the project directory:
 cd smart-contact-manager
 3. Configure the application.properties file with your MySQL database credentials.
